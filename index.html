@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app" >
+		  <div id="input_box" style="display:inline-block">
+            <div>将开关内容复制到下方，点击reset按钮初始化，勾选复选框</div>
+			<textarea name="textarea" cols="60" rows="20" v-model="inputMsg"></textarea>
+			<div><label>现有开关值</label><input v-model="inputSwitchOp" v-on:blur="inputSwitchOpUpdate"/></div>
+            <div><button v-on:click="reset">reset</button></div>
+		  </div>
+          
+		  <hr />
+		  <div id="output_box">
+		    <ul id="check_list">
+		      <li v-for="item in output_items" :key="item.id">
+		        {{ item.desc }}
+                <input type="checkbox" v-bind:ref="'hexCode' + item.id" v-bind:id="'hexCode' + item.id" v-bind:value="item.code" v-model="checkOps"/>
+                <label v-bind:for="'hexCode' + item.id">{{ item.code }} </label>
+		      </li>
+		    </ul>
+            <div><label>十六进制选择开关：{{finalSwitchOption}}</label></div>
+            <div><label>十进制选择开关：{{switchOption}}</label></div>
+		  </div>
+		</div>
+		
+		<hr />
+	</body>
+	<footer>
+		<script src="js/main.js" type="text/javascript" charset="utf-8"></script>
+	</footer>
+</html>
